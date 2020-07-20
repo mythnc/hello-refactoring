@@ -1,3 +1,30 @@
+let plays = {
+    "hamlet": {"name": "Hamlet", "type": "tragedy"},
+    "as-like": {"name": "As You Like It", "type": "comedy"},
+    "othello": {"name": "Othello", "type": "tragedy"}
+  };
+
+let invoices = [
+    {
+      "customer": "BigCo",
+      "performances": [
+        {
+          "playID": "hamlet",
+          "audience": 55
+        },
+        {
+          "playID": "as-like",
+          "audience": 35
+        },
+        {
+          "playID": "othello",
+          "audience": 40
+        }
+      ]
+    }
+];
+
+
 function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
@@ -7,7 +34,7 @@ function statement(invoice, plays) {
       minimumFractionDigits: 2 }).format;
 
   for (let perf of invoice.performances) { 
-    const play = plays[perf.playID];
+    const play = playFor(perf);
     let thisAmount = amountFor(perf, play);
 
     // add volume credits
@@ -47,31 +74,9 @@ function amountFor(aPerformance, play) {
   return result;
 } 
 
-let plays = {
-    "hamlet": {"name": "Hamlet", "type": "tragedy"},
-    "as-like": {"name": "As You Like It", "type": "comedy"},
-    "othello": {"name": "Othello", "type": "tragedy"}
-  };
-
-let invoices = [
-    {
-      "customer": "BigCo",
-      "performances": [
-        {
-          "playID": "hamlet",
-          "audience": 55
-        },
-        {
-          "playID": "as-like",
-          "audience": 35
-        },
-        {
-          "playID": "othello",
-          "audience": 40
-        }
-      ]
-    }
-];
+function playFor(aPerformance) {
+  return plays[aPerformance.playID];
+}
 
 let result = statement(invoices[0], plays);
 console.log(result);
