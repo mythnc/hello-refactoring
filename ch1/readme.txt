@@ -1,1 +1,1 @@
-$ node --experimental-modules theatrical-players.js
+$ node --experimental-modules statement.js
