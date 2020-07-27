@@ -1,0 +1,9 @@
+{
+  "name": "hello-refactoring-ch1",
+  "version": "0.0.1",
+  "description": "",
+  "author": "N.C Wu",
+  "main": "./statement.js",
+  "type": "module"
+}
+
